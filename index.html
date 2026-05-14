@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>내나 - 내 주변을 더 쉽게</title>
-  <meta name="description" content="내나는 내 주변의 장소와 생활 정보를 쉽고 빠르게 확인할 수 있는 위치 기반 생활 앱입니다.">
+  <title>내나 - 지금의 나를 기록하고 주변 흐름을 확인하세요</title>
+  <meta name="description" content="내나는 일상 속 가벼운 선택을 기록하고, 내 주변에서 어떤 흐름이 나타나는지 확인할 수 있는 라이프스타일 앱입니다.">
 
   <style>
     :root {
@@ -44,7 +44,7 @@
 
     header {
       border-bottom: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.92);
     }
 
     .nav {
@@ -95,7 +95,7 @@
 
     .hero-inner {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.08fr 0.92fr;
       gap: 48px;
       align-items: center;
     }
@@ -116,7 +116,7 @@
 
     h1 {
       margin: 0;
-      font-size: clamp(38px, 6vw, 64px);
+      font-size: clamp(36px, 6vw, 62px);
       line-height: 1.12;
       letter-spacing: -0.06em;
     }
@@ -125,7 +125,7 @@
       margin: 24px 0 0;
       font-size: 19px;
       color: var(--muted);
-      max-width: 620px;
+      max-width: 640px;
       word-break: keep-all;
     }
 
@@ -163,7 +163,7 @@
       border-color: var(--border);
     }
 
-    .phone-card {
+    .visual-card {
       min-height: 420px;
       border-radius: 36px;
       background: #ffffff;
@@ -174,7 +174,7 @@
       overflow: hidden;
     }
 
-    .phone-card::before {
+    .visual-card::before {
       content: "";
       position: absolute;
       width: 260px;
@@ -185,34 +185,75 @@
       right: -70px;
     }
 
-    .mock-map {
+    .app-preview {
       position: relative;
-      height: 100%;
       min-height: 360px;
       border-radius: 28px;
-      background:
-        linear-gradient(90deg, rgba(31,41,55,0.04) 1px, transparent 1px),
-        linear-gradient(rgba(31,41,55,0.04) 1px, transparent 1px),
-        #f7fffd;
-      background-size: 44px 44px;
+      background: #f7fffd;
       overflow: hidden;
       border: 1px solid var(--border);
+      padding: 22px;
     }
 
-    .pin {
-      position: absolute;
-      width: 18px;
-      height: 18px;
+    .mini-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mini-title {
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    .mini-pill {
+      padding: 6px 10px;
       border-radius: 999px;
-      background: var(--primary);
-      box-shadow: 0 0 0 8px rgba(32, 199, 181, 0.14);
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-size: 12px;
+      font-weight: 800;
     }
 
-    .pin.one { top: 34%; left: 30%; }
-    .pin.two { top: 58%; left: 56%; }
-    .pin.three { top: 42%; left: 72%; }
+    .choice-card {
+      position: relative;
+      z-index: 1;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: 0 12px 28px rgba(31, 41, 55, 0.08);
+      margin-bottom: 14px;
+    }
 
-    .info-card {
+    .choice-card strong {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 12px;
+      letter-spacing: -0.03em;
+    }
+
+    .choice-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .choice-options span {
+      display: block;
+      padding: 12px;
+      border-radius: 16px;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 800;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .flow-card {
       position: absolute;
       left: 24px;
       right: 24px;
@@ -222,17 +263,29 @@
       padding: 18px;
       box-shadow: 0 12px 32px rgba(31, 41, 55, 0.12);
       border: 1px solid var(--border);
+      z-index: 1;
     }
 
-    .info-card strong {
-      display: block;
-      font-size: 18px;
-      margin-bottom: 6px;
+    .flow-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 12px;
     }
 
-    .info-card span {
-      color: var(--muted);
-      font-size: 14px;
+    .bar {
+      height: 10px;
+      border-radius: 999px;
+      background: var(--primary);
+    }
+
+    .bar.one {
+      width: 68%;
+    }
+
+    .bar.two {
+      width: 42%;
+      background: #8ee7dc;
     }
 
     section {
@@ -253,7 +306,7 @@
     .section-title p {
       margin: 12px auto 0;
       color: var(--muted);
-      max-width: 640px;
+      max-width: 660px;
       word-break: keep-all;
     }
 
@@ -291,6 +344,27 @@
     .feature p {
       margin: 0;
       color: var(--muted);
+      word-break: keep-all;
+    }
+
+    .phrase {
+      padding: 72px 0;
+      background: var(--primary);
+      color: white;
+      text-align: center;
+    }
+
+    .phrase h2 {
+      margin: 0;
+      font-size: clamp(28px, 5vw, 44px);
+      letter-spacing: -0.05em;
+      line-height: 1.25;
+    }
+
+    .phrase p {
+      margin: 16px auto 0;
+      max-width: 620px;
+      color: rgba(255, 255, 255, 0.86);
       word-break: keep-all;
     }
 
@@ -344,7 +418,7 @@
         grid-template-columns: 1fr;
       }
 
-      .phone-card {
+      .visual-card {
         min-height: 360px;
       }
 
@@ -389,11 +463,11 @@
     <section class="hero">
       <div class="container hero-inner">
         <div>
-          <div class="badge">내 주변을 더 쉽게</div>
-          <h1>내 주변의 정보를<br>가볍고 빠르게 확인하세요.</h1>
+          <div class="badge">오늘의 선택으로 보는 내 주변 흐름</div>
+          <h1>지금의 나를 슬쩍 찍으면,<br>내 주변 흐름이 보입니다.</h1>
           <p>
-            내나는 현재 위치를 기반으로 주변의 장소와 생활 정보를 쉽게 확인할 수 있도록 돕는 위치 기반 생활 앱입니다.
-            필요한 정보를 복잡하지 않게, 한눈에 확인할 수 있도록 준비하고 있습니다.
+            내나는 일상 속 가벼운 선택을 기록하고, 내 주변에서 어떤 흐름이 나타나는지 한눈에 보여주는 라이프스타일 앱입니다.
+            질문에 답하는 앱이 아니라, 지금의 나를 가볍게 찍고 주변의 비슷한 흐름을 발견하는 앱입니다.
           </p>
 
           <div class="actions">
@@ -402,15 +476,31 @@
           </div>
         </div>
 
-        <div class="phone-card" aria-hidden="true">
-          <div class="mock-map">
-            <span class="pin one"></span>
-            <span class="pin two"></span>
-            <span class="pin three"></span>
+        <div class="visual-card" aria-hidden="true">
+          <div class="app-preview">
+            <div class="mini-header">
+              <span class="mini-title">오늘의 내나</span>
+              <span class="mini-pill">내 주변 흐름</span>
+            </div>
 
-            <div class="info-card">
-              <strong>주변 정보를 한눈에</strong>
-              <span>지도와 위치를 기반으로 필요한 정보를 쉽고 빠르게 확인합니다.</span>
+            <div class="choice-card">
+              <strong>오늘 나는 어떤 쪽에 가까울까?</strong>
+              <div class="choice-options">
+                <span>가볍게 고르기</span>
+                <span>흐름 보기</span>
+              </div>
+            </div>
+
+            <div class="flow-card">
+              <strong>요즘 분위기</strong>
+              <div class="flow-row">
+                <div class="bar one"></div>
+                <span>68%</span>
+              </div>
+              <div class="flow-row">
+                <div class="bar two"></div>
+                <span>42%</span>
+              </div>
             </div>
           </div>
         </div>
@@ -420,34 +510,81 @@
     <section>
       <div class="container">
         <div class="section-title">
-          <h2>내나가 제공하는 가치</h2>
+          <h2>내나에서 할 수 있는 것</h2>
           <p>
-            복잡한 탐색 과정을 줄이고, 사용자가 필요한 정보를 자연스럽게 확인할 수 있는 경험을 지향합니다.
+            부담 없이 열고, 빠르게 고르고, 바로 반응을 확인할 수 있습니다.
           </p>
         </div>
 
         <div class="features">
           <article class="feature">
             <div class="feature-icon">1</div>
-            <h3>위치 기반 탐색</h3>
+            <h3>오늘의 내나 참여</h3>
             <p>
-              현재 위치를 기준으로 주변의 정보를 확인할 수 있도록 돕습니다.
+              홈에서 시간대별 내나 카드에 참여하고, 지금의 선택을 가볍게 남길 수 있습니다.
             </p>
           </article>
 
           <article class="feature">
             <div class="feature-icon">2</div>
-            <h3>간결한 사용 경험</h3>
+            <h3>나만의 내나 만들기</h3>
             <p>
-              필요한 정보를 찾는 과정을 줄이고, 직관적인 화면 흐름을 제공합니다.
+              나만의 내나를 만들고 공개 또는 비공개로 설정해 기록할 수 있습니다.
             </p>
           </article>
 
           <article class="feature">
             <div class="feature-icon">3</div>
-            <h3>사용자 중심 관리</h3>
+            <h3>흐름과 리포트 확인</h3>
             <p>
-              계정, 개인정보, 데이터 삭제 요청 등 사용자의 권리를 명확히 안내합니다.
+              최근 기록, 내나 온도, 밀도 리포트를 통해 나와 주변의 분위기를 확인할 수 있습니다.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="phrase">
+      <div class="container">
+        <h2>오늘의 선택으로<br>내 주변 흐름을 확인하세요.</h2>
+        <p>
+          위치 권한을 허용하면 내 주변 흐름 중심의 지도를 볼 수 있고,
+          위치 권한이 없어도 전체 흐름 지도는 확인할 수 있습니다.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-title">
+          <h2>내 기록을 한곳에서 관리</h2>
+          <p>
+            내가 만든 내나, 참여한 내나, 최근 기록을 마이페이지에서 관리할 수 있습니다.
+          </p>
+        </div>
+
+        <div class="features">
+          <article class="feature">
+            <div class="feature-icon">나</div>
+            <h3>내 흐름 확인</h3>
+            <p>
+              최근 기록을 바탕으로 나의 선택 흐름을 확인할 수 있습니다.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">온</div>
+            <h3>내나 온도</h3>
+            <p>
+              선택과 반응을 바탕으로 요즘 분위기를 가볍게 살펴볼 수 있습니다.
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">맵</div>
+            <h3>흐름 지도</h3>
+            <p>
+              내 주변 또는 전체 흐름을 지도 기반으로 확인할 수 있습니다.
             </p>
           </article>
         </div>
